@@ -16,3 +16,7 @@ Timestamp: Mon May 30 2022 14:42:16 GMT+0200 (Central European Summer Time)
 URL: /favicon.ico
 Timestamp: Mon May 30 2022 14:42:16 GMT+0200 (Central European Summer Time)
 
+::1 - - [01/Jun/2022:13:03:14 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36"
+::ffff:127.0.0.1 - - [01/Jun/2022:13:09:13 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://127.0.0.1:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36"
+::1 - - [01/Jun/2022:13:20:55 +0000] "GET /secreturl HTTP/1.1" 404 148 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36"
+::1 - - [01/Jun/2022:13:21:00 +0000] "GET /secreturl HTTP/1.1" 404 148 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36"
