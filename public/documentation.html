@@ -1,4 +1,171 @@
-Movie Database
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+     </style>
+    </head>
+<body>
+    
+    Movie Database
 I am building the server-side component of a "movies" web application.
 This API provides information on films, directors, and genres.
 Users can register, add personal information, and create and maintain their own lists of films.
+</p>
+
+<h2>Rest API movie data</h2>
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>URL</th>
+                    <th>HTTP Method</th>
+                    <th>Request body data format</th>
+                    <th>Response body data format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Return a list of movies to the user</td>
+                    <td>/movies</td>
+                    <td>Get</td>
+                    <td>none</td>
+                    <td>A JSON object containing all movies</td>
+                </tr>
+                <tr>
+                    <td>Return data about a single movie by title to the user</td>
+                    <td>/movies/[name]</td>
+                    <td>Get</td>
+                    <td>none</td>
+                    <td>A JSON object containing data, including title, img url, genre, description and director of a single movie by title
+                        <pre>
+                            <code>
+                                {
+                                id: '',
+                                title: '',
+                                description: '',
+                                genre: '',
+                                director: '',
+                                img: ''
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Return data about a genre by name</td>
+                    <td>/movies/genre/[genreName]</td>
+                    <td>Get</td>
+                    <td>none</td>
+                    <td>A JSON object containing data about the genre:
+                        <pre>
+                            <code>
+                                {
+                                genre: '',
+                                description: ''
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Return data about a director</td>
+                    <td>/movies/directors/[directorsName]</td>
+                    <td>Get</td>
+                    <td>none</td>
+                    <td>A JSON object containing data about the director:
+                        <pre>
+                            <code>
+                                {
+                                name: '',
+                                biography: '',
+                                date of birth: '',
+                                date of death: ''
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Allow new user to register</td>
+                    <td>/users</td>
+                    <td>Post</td>
+                    <td>A JSON object containing data about the user to add, structured so:
+                       <pre>
+                            <code>
+                                {
+                                username: '',
+                                password: '',
+                                email: '',
+                                birthday: '',
+                                favoriteMovies: []
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                    <td>A JSON object containing data about the users added, inluding an ID:
+                        <pre>
+                            <code>
+                                {
+                                id: '',
+                                username: '',
+                                password:'',
+                                email: '',
+                                birthday: '',
+                                favoriteMovies: []
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Allow users to update their info</td>
+                    <td>/users/[id]</td>
+                    <td>Put</td>
+                    <td>none</td>
+                    <td>
+                        <pre>
+                            <code>
+                                {
+                                id: '',
+                                username: '',
+                                password: '',
+                                email: '',
+                                birthday: '',
+                                favoriteMovies: []
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Allow users to add a movie to list of favorites</td>
+                    <td>/users/[id]/[movieName]</td>
+                    <td>Post</td>
+                    <td>none</td>
+                    <td>A message confirming that a movie has been added to favourites</td>
+                </tr>
+                <tr>
+                    <td>Allow users to remove a movie from list of favorites</td>
+                    <td>/users/[id]/[movieName]</td>
+                    <td>Delete</td>
+                    <td>none</td>
+                    <td>A message confirming that a movie has been removed from favourites</td>
+                </tr>
+                <tr>
+                    <td>Allow existing users to deregister</td>
+                    <td>/users/[id]</td>
+                    <td>Delete</td>
+                    <td>none</td>
+                    <td>A message confirming user was successfully deregistered</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>
