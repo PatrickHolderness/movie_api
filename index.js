@@ -174,18 +174,18 @@ app.get('/documentation', (req, res) => {
  
 //Display all movies
 app.get('/movies', (req, res) => {
-    res.status(200).json(Movies);
+    res.status(200).json(movies);
 });
 
 //Display single movie
 app.get('/movies/:title', (req, res) => {
     const { title } = req.params;
-    const movie = movies.find( movie => movie.Title === title)
+    const movie = movies.find( movie => movie.Title === title);
   
     if (movie) {
       res.status(200).json(movie);
     } else {
-      res.status(400).send("Sorry, no such movie.")
+      res.status(400).send("Sorry, no such movie.");
     }
   });
 
@@ -226,7 +226,7 @@ app.post('/users', (req, res) => {
     if (newUser.name) {
         newUser.id = uuid.v4();
         users.push(newUser);
-        res.status(201).json(newUser)
+        res.status(201).json(newUser);
     } 
     else  {
         res.status(400).send("Name required");
@@ -243,7 +243,7 @@ app.put('/users/:id', (req, res) => {
         user.name = updatedUser;
         res.status(200).json(user);
     } else {
-        res.status(400).send("No such user")
+        res.status(400).send("No such user");
     }
 });
 
@@ -258,7 +258,7 @@ app.post('/users/:id/:movieTitle', (req, res) => {
     } else {
         res.status(400).send("No such user");
     }
-})
+});
 
 //Delete movie from user's favouriteMovies list
 app.delete('/users/:id/:movieTitle', (req, res) => {
