@@ -37,7 +37,7 @@ Users can register, add personal information, and create and maintain their own 
                 </tr>
                 <tr>
                     <td>Return data about a single movie by title to the user</td>
-                    <td>/movies/[name]</td>
+                    <td>/movies/:Title</td>
                     <td>Get</td>
                     <td>none</td>
                     <td>A JSON object containing data, including title, img url, genre, description and director of a single movie by title
@@ -57,7 +57,7 @@ Users can register, add personal information, and create and maintain their own 
                 </tr>
                 <tr>
                     <td>Return data about a genre by name</td>
-                    <td>/movies/genre/[genreName]</td>
+                    <td>/movies/genre/:Name</td>
                     <td>Get</td>
                     <td>none</td>
                     <td>A JSON object containing data about the genre:
@@ -73,7 +73,7 @@ Users can register, add personal information, and create and maintain their own 
                 </tr>
                 <tr>
                     <td>Return data about a director</td>
-                    <td>/movies/directors/[directorsName]</td>
+                    <td>/movies/directors/:Name</td>
                     <td>Get</td>
                     <td>none</td>
                     <td>A JSON object containing data about the director:
@@ -123,7 +123,7 @@ Users can register, add personal information, and create and maintain their own 
                 </tr>
                 <tr>
                     <td>Allow users to update their info</td>
-                    <td>/users/[id]</td>
+                    <td>/users/:Username</td>
                     <td>Put</td>
                     <td>none</td>
                     <td>
@@ -143,21 +143,21 @@ Users can register, add personal information, and create and maintain their own 
                 </tr>
                 <tr>
                     <td>Allow users to add a movie to list of favorites</td>
-                    <td>/users/[id]/[movieName]</td>
+                    <td>/users/:username/movies/:MovieID</td>
                     <td>Post</td>
                     <td>none</td>
                     <td>A message confirming that a movie has been added to favourites</td>
                 </tr>
                 <tr>
                     <td>Allow users to remove a movie from list of favorites</td>
-                    <td>/users/[id]/[movieName]</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>Delete</td>
                     <td>none</td>
                     <td>A message confirming that a movie has been removed from favourites</td>
                 </tr>
                 <tr>
                     <td>Allow existing users to deregister</td>
-                    <td>/users/[id]</td>
+                    <td>/users/:Username</td>
                     <td>Delete</td>
                     <td>none</td>
                     <td>A message confirming user was successfully deregistered</td>
