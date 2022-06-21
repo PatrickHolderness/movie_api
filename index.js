@@ -4,6 +4,8 @@ const express = require('express'),
     uuid = require('uuid'),
     fs = require('fs'),
     path = require('path');
+    mongoose = require('mongoose');
+    Models = require('./models.js');
 
 var app = express();
 
@@ -11,6 +13,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
+const Movies = Models.Movie;
+const Users = Models.User;
+mongoose.connect('mongodb://localhost:27017/MovieInfoDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 
 let users = [
