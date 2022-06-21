@@ -35,7 +35,7 @@ let users = [
     "name": "Henry",
     "favouriteMovies": ['La Grande Bouffe']
 }
-]
+];
 
 
 let movies = [
