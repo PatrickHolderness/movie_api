@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
+
 const Movies = Models.Movie;
 const Users = Models.User;
 
@@ -35,7 +39,7 @@ app.get('/documentation', (req, res) => {
 });
  
 //Display all movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
     Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
