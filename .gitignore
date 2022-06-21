@@ -1,2 +1,21 @@
+# Ignore the node_modules directory
 node_modules/
+
+# Ignore Logs
+logs
+*.log
+log.txt
+
+
+# The file containing environment variables 
+.env
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+*.sw*
+#Ignore Workspace files
+.code-workspace
+log.txt
+log.txt
 log.txt
