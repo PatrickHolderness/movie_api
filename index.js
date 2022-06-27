@@ -5,7 +5,7 @@ app.use(cors({
   origin: (origin, callback) => {
     if(!origin) return callback(null, true);
     if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
-      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      let message = 'The CORS policy for this application doesnt allow access from origin ' + origin;
       return callback(new Error(message ), false);
     }
     return callback(null, true);
@@ -17,14 +17,14 @@ const passport = require('passport');
 require('./passport');
 
 const express = require('express'),
-const morgan = require('morgan'),
-const bodyParser = require('body-parser'),
-const uuid = require('uuid'),
-const fs = require('fs'),
-const path = require('path');
+      morgan = require('morgan'),
+      bodyParser = require('body-parser'),
+      uuid = require('uuid'),
+      fs = require('fs'),
+      path = require('path');
 const { rest } = require('lodash');
-const mongoose = require('mongoose');
-const Models = require('./models.js');
+      mongoose = require('mongoose');
+      Models = require('./models.js');
 
 var app = express();
 
@@ -137,6 +137,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
   Birthday: Date
 }*/
 app.post('/users', (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username })
       .then((user) => {
         if (user) {
@@ -145,7 +146,7 @@ app.post('/users', (req, res) => {
           Users
             .create({
               Username: req.body.Username,
-              Password: req.body.Password,
+              Password: hashedPassword,
               Email: req.body.Email,
               Birthday: req.body.Birthday
             })
