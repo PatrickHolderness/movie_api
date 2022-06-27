@@ -136,3 +136,5 @@ Timestamp: Mon May 30 2022 14:42:16 GMT+0200 (Central European Summer Time)
 ::1 - - [21/Jun/2022:15:06:33 +0000] "PUT /users HTTP/1.1" 404 144 "-" "PostmanRuntime/7.29.0"
 ::1 - - [21/Jun/2022:15:09:55 +0000] "PUT /users/testuser20340/movies/62b07c2d35dd03560b9ce4c6 HTTP/1.1" 404 190 "-" "PostmanRuntime/7.29.0"
 ::1 - - [21/Jun/2022:15:10:32 +0000] "PUT /users/testuser20340/movies/62b07c2d35dd03560b9ce4c6 HTTP/1.1" 404 190 "-" "PostmanRuntime/7.29.0"
+::1 - - [21/Jun/2022:16:46:57 +0000] "GET /movies/directors/Alan%20Resnais HTTP/1.1" 404 170 "-" "PostmanRuntime/7.29.0"
+::1 - - [21/Jun/2022:16:47:47 +0000] "PUT /users HTTP/1.1" 404 144 "-" "PostmanRuntime/7.29.0"
