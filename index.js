@@ -26,6 +26,8 @@ const { rest, isLength, isEmpty } = require('lodash');
       mongoose = require('mongoose');
       Models = require('./models.js');
 
+var port = process.env['PORT'] || 3000;
+
 var app = express();
 
 app.use(bodyParser.json());
