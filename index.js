@@ -26,7 +26,10 @@ const { rest, isLength, isEmpty } = require('lodash');
       mongoose = require('mongoose');
       Models = require('./models.js');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 5f74716 (defined port)
 var app = express();
 
 app.use(bodyParser.json());
