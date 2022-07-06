@@ -42,7 +42,7 @@ const Users = Models.User;
   //useUnifiedTopology: true,
 //});
 
-Mongoose connection to database for CRUD
+//Mongoose connection to database for CRUD
 mongoose.connect( process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
