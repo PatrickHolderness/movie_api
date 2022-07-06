@@ -1,3 +1,19 @@
+const express = require('express'),
+      app = express(),
+      morgan = require('morgan'),
+      bodyParser = require('body-parser'),
+      uuid = require('uuid'),
+      fs = require('fs'),
+      path = require('path');
+const { check, validationResult } = require ('express-validator');
+const { rest, isLength, isEmpty } = require('lodash');
+      mongoose = require('mongoose');
+      Models = require('./models.js');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
 app.use(cors({
@@ -15,23 +31,8 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-const express = require('express'),
-      morgan = require('morgan'),
-      bodyParser = require('body-parser'),
-      uuid = require('uuid'),
-      fs = require('fs'),
-      path = require('path');
-const { check, validationResult } = require ('express-validator');
-const { rest, isLength, isEmpty } = require('lodash');
-      mongoose = require('mongoose');
-      Models = require('./models.js');
 
-var app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
 const Movies = Models.Movie;
 const Users = Models.User;
