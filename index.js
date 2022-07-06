@@ -56,11 +56,11 @@ mongoose.connect( process.env.CONNECTION_URI, {
 app.get('/', (req, res) => {
     res.send("Welcome to Movie Info!");
 });
-  
-app.get('/documentation', (req, res) => {                  
+
+app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
 });
- 
+
 //Display all movies
 app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
     Movies.find()
@@ -96,7 +96,7 @@ app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req, 
             res.status(500).send('Error: ' + err);
           });
       });
-    
+
 
     //Display Director ddata
     app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false}), (req, res) => {
@@ -145,7 +145,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
   Email: String,
   Birthday: Date
 }*/
-app.post('/users', 
+app.post('/users',
 
 [
   check ('Username', 'Username is required').isLength({min: 5}),
@@ -160,7 +160,7 @@ app.post('/users',
 
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
-  
+
   }
   let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username })
@@ -199,7 +199,7 @@ app.post('/users',
   (required)
   Birthday: Date
 }*/
-app.put('/users/:Username', passport.authenticate('jwt', {session: false}),    
+app.put('/users/:Username', passport.authenticate('jwt', {session: false}),
 [   // Validation checks
 check('Username', 'Username must be at least 5 characters').isLength({ min: 5 }),
 check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
@@ -299,7 +299,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
   });
 
-  
+
 // listen for requests
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
