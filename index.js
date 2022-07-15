@@ -40,10 +40,14 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 //Mongoose connection to database for CRUD
-mongoose.connect('mongodb://localhost:27017/MovieInfoDB', {
-useNewUrlParser: true,
-useUnifiedTopology: true,
-});
+//mongoose.connect('mongodb://localhost:27017/MovieInfoDB', {
+ // useNewUrlParser: true,
+  //useUnifiedTopology: true,
+//});
+
+//Mongoose connection to database for CRUD
+mongoose.connect('mongodb+srv://patrickholde:(42x_xZr-5Jk^(5@movie-info.zujtgza.mongodb.net/?authsource=admin', { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 
 // GET requests
