@@ -46,8 +46,7 @@ const Users = Models.User;
 //});
 
 //Mongoose connection to database for CRUD
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect('mongodb+srv://patrickholde:(42x_xZr-5Jk^(5@movie-info.zujtgza.mongodb.net/?authsource=admin', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 
