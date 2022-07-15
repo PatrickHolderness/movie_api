@@ -1,5 +1,5 @@
 const express = require('express'),
-      app = express.urlencoded({extended:true}),
+      app = express(),
       morgan = require('morgan'),
       bodyParser = require('body-parser'),
       uuid = require('uuid'),
