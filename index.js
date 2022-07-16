@@ -1,3 +1,9 @@
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
 const express = require('express'),
       app = express(),
       morgan = require('morgan'),
@@ -7,8 +13,6 @@ const express = require('express'),
       path = require('path');
 const { check, validationResult } = require ('express-validator');
 const { rest, isLength, isEmpty } = require('lodash');
-      mongoose = require('mongoose');
-      Models = require('./models.js');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -33,11 +37,6 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport.js');
 
-
-
-
-const Movies = Models.Movie;
-const Users = Models.User;
 
 //Mongoose connection to database for CRUD
 //mongoose.connect('mongodb://localhost:27017/MovieInfoDB', {
