@@ -43,15 +43,15 @@ const passport = require('passport');
 require('./passport.js');
 
 
-//Mongoose connection to database for CRUD
+// Mongoose connection to database for CRUD
 //mongoose.connect('mongodb://localhost:27017/MovieInfoDB', {
- // useNewUrlParser: true,
-  //useUnifiedTopology: true,
-//});
+//useNewUrlParser: true,
+//useUnifiedTopology: true,
+// });
 
-//Mongoose connection to database for CRUD
+// Mongoose connection to database for CRUD
 const DATABASE_URL = process.env.DATABASE_URL || 
-"mongodb+srv://patrickholde:(42x_xZr-5Jk^(5@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority"
+"mongodb+srv://patrickholde:(42x_xZr-5Jk^(5@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority";
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
