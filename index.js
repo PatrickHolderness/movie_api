@@ -19,11 +19,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 const cors = require('cors');
-const corsOptions = {
-  origin: '*',
-  credentials:true,
-  optionSuccessStatus:200,
-}
 
 let allowedOrigins = 
 [
@@ -33,7 +28,7 @@ let allowedOrigins =
  'http://localhost.1234'
 ];
 
-app.use(cors(corsOptions)({
+app.use(cors({
   origin: (origin, callback) => {
       if (!origin) return callback(null, true);
       if (allowedOrigins.indexOf(origin) === -1) {
