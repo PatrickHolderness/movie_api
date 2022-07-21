@@ -50,6 +50,8 @@ require('./passport.js');
 //});
 
 //Mongoose connection to database for CRUD
+const DATABASE_URL = process.env.DATABASE_URL || 
+"mongodb+srv://patrickholde:(42x_xZr-5Jk^(5@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority"
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
@@ -216,7 +218,7 @@ if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
 }
 let hashedPassword = Users.hashPassword(req.body.Password);
-Users.findOneAndUpdate({ Username: req.params.username }, {
+Users.findOneAndUpdate({ Username: req.params.Username }, {
     $set:
     {
         Username: req.body.Username,
