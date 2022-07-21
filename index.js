@@ -52,7 +52,7 @@ require('./passport.js');
 
 // Mongoose connection to database for CRUD
 const DATABASE_URL = process.env.DATABASE_URL || 
-"mongodb+srv://patrickholde:(42x_xZr-5Jk^(5@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority";
+"mongodb+srv://patrickholde:JSdBMUkI2CtbM8Mf@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority";
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
