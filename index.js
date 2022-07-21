@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 const cors = require('cors');
-
+app.options('*', cors());
 let allowedOrigins = 
 [
   'http://localhost:8080',
