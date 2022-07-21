@@ -24,7 +24,8 @@ let allowedOrigins =
 [
   'http://localhost:8080',
  'http://testsite.com',
- 'http://movie-info-online.herokuapp.com/'
+ 'http://movie-info-online.herokuapp.com/',
+ 'http://localhost.1234'
 ];
 
 app.use(cors({
