@@ -139,3 +139,4 @@ Timestamp: Mon May 30 2022 14:42:16 GMT+0200 (Central European Summer Time)
 ::1 - - [21/Jun/2022:16:46:57 +0000] "GET /movies/directors/Alan%20Resnais HTTP/1.1" 404 170 "-" "PostmanRuntime/7.29.0"
 ::1 - - [21/Jun/2022:16:47:47 +0000] "PUT /users HTTP/1.1" 404 144 "-" "PostmanRuntime/7.29.0"
 127.0.0.1 - - [15/Jul/2022:14:23:04 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/movies" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+127.0.0.1 - - [28/Jul/2022:11:59:13 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/movies" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
