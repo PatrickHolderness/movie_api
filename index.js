@@ -1,34 +1,21 @@
+const express = require('express'),
+      morgan = require('morgan'),
+      path = require('path'),
+      bodyParser = require('body-parser'),
+      uuid = require('uuid');
+      fs = require('fs');
+
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
-const express = require('express');
-      app = express()
+
 const dotenv = require('dotenv');
       dotenv.config()
-      morgan = require('morgan');
-      bodyParser = require('body-parser');
-      uuid = require('uuid');
-      fs = require('fs');
-      path = require('path');
-const { check, validationResult } = require ('express-validator');
-const { rest, isLength, isEmpty } = require('lodash');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-const cors = require('cors');
-app.use(cors());
-
-let auth = require('./auth')(app);
-const passport = require('passport');
-require('./passport.js');
-
-
-// Mongoose connection to database for CRUD
+  
+      // Mongoose connection to database for CRUD
 //mongoose.connect('mongodb://localhost:27017/MovieInfoDB', {
 //useNewUrlParser: true,
 //useUnifiedTopology: true,
@@ -39,8 +26,30 @@ const DATABASE_URL = process.env.DATABASE_URL ||
 "mongodb+srv://patrickholde:JSdBMUkI2CtbM8Mf@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority";
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+const app = express();
+  
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+//CORS - place before route middleware
+const cors = require('cors');
+app.use(cors());
+
+//Validation and authentication
+const { check, validationResult } = require ('express-validator');
+const { rest, isLength, isEmpty } = require('lodash');
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport.js');
 
 
+
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+     next();
+});
 
 // GET requests
 app.get('/', (req, res) => {
@@ -52,7 +61,7 @@ app.get('/documentation', (req, res) => {
 });
 
 //Display all movies
-app.get("/movies", function (req, res) {
+app.get("/movies", passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.find()
     .then(function (movies) {
       res.status(201).json(movies);
@@ -219,7 +228,7 @@ Users.findOneAndUpdate({ Username: req.params.Username }, {
     });
 });
 
-//Add movie to favouriteMovies list
+//Add movie to favoriteMovies list
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
        $push: { FavouriteMovies: req.params.MovieID }
@@ -235,12 +244,12 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {sessi
     });
   });
 
-//Delete movie from user's favouriteMovies list
+//Delete movie from user's favoriteMovies list
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndUpdate(
     { Username: req.params.Username },
     {
-      $pull: { FavouriteMovies: req.params.MovieID },
+      $pull: { FavoriteMovies: req.params.MovieID },
     },
     { new: true },
     (err, updatedUser) => {

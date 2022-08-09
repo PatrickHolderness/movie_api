@@ -1,0 +1,34 @@
+
+html {
+  background-color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+}
+
+.app-container {
+  background-color: #c3ccff;
+  color: #ffffff;
+}
+
+.btn.btn-primary {
+  background-color: #979dc1;
+}
+.card-body {
+  background-color: #ffffff;
+  padding-top: 5px;
+}
+
+.btn.btn-link {
+  color: #979dc1;
+  font-weight: 500;
+  float: left;
+}
+.movie-poster {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.32141e30.css.map */

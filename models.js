@@ -21,19 +21,19 @@ let userSchema = mongoose.Schema({
     Password: {type: String, required: true},
     Email: {type: String, required: true},
     Birthday: Date,
-    FavouriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]
+    FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]
 });
 
-userSchema.statics.hashPassword = (password) => {
-    return bcrypt.hashSync(password, 10);
+userSchema.statics.hashPassword = (Password) => {
+    return bcrypt.hashSync(Password, 10);
 };
 
-userSchema.methods.validatePassword = function(password) {
-    return bcrypt.compareSync(password, this.Password);
+userSchema.methods.validatePassword = function(Password) {
+    return bcrypt.compareSync(Password, this.Password);
 };
 
-let Movie = mongoose.model('movie', movieSchema);
-let User = mongoose.model('user', userSchema);
+let Movie = mongoose.model('Movie', movieSchema);
+let User = mongoose.model('User', userSchema);
 
 module.exports.Movie = Movie;
 module.exports.User = User;
