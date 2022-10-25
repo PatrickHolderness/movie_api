@@ -5,6 +5,8 @@ const express = require('express'),
       uuid = require('uuid');
       fs = require('fs');
 
+// Next four lines used to integrate mongoose into Rest API to perform CRUD on MongoDB data
+
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
@@ -32,6 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 //CORS - place before route middleware
 const cors = require('cors');
 
@@ -48,17 +51,17 @@ app.use(cors({
   }
 }));
 
-app.options('*', cors());
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'example.com');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-}
+// app.options('*', cors());
+// var allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'example.com');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+// }
 
 //Validation and authentication
-const { check, validationResult } = require ('express-validator');
-const { rest, isLength, isEmpty } = require('lodash');
-let auth = require('./auth')(app);
+// const { check, validationResult } = require ('express-validator');
+// // const { rest, isLength, isEmpty } = require('lodash');
+// // let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport.js');
 
