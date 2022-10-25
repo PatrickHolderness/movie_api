@@ -61,7 +61,7 @@ app.use(cors({
 //Validation and authentication
 // const { check, validationResult } = require ('express-validator');
 // // const { rest, isLength, isEmpty } = require('lodash');
-// // let auth = require('./auth')(app);
+let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport.js');
 
