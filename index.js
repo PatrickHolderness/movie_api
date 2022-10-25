@@ -59,7 +59,7 @@ app.use(cors({
 // }
 
 //Validation and authentication
-// const { check, validationResult } = require ('express-validator');
+const { check, validationResult } = require ('express-validator');
 // // const { rest, isLength, isEmpty } = require('lodash');
 let auth = require('./auth')(app);
 const passport = require('passport');
@@ -166,6 +166,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
   Email: String,
   Birthday: Date
 }*/
+
 app.post('/users',
 
 [
