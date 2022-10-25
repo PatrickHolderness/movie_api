@@ -173,7 +173,7 @@ app.post('/users',
   check ('Username', 'Username is required').isLength({min: 5}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
+  // check('Email', 'Email does not appear to be valid').isEmail()
 
 ], (req, res) => {
 
@@ -226,7 +226,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false}),
 check('Username', 'Username must be at least 5 characters').isLength({ min: 5 }),
 check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
 check('Password', 'Password must be at least 8 characters').isLength({ min: 8 }),
-check('Email', 'Email does not appear to be valid').isEmail()
+// check('Email', 'Email does not appear to be valid').isEmail()
 ],
 (req, res) => {
 // First check for validation errors
