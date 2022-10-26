@@ -251,6 +251,36 @@ Users.findOneAndUpdate({ Username: req.params.Username }, {
     });
 });
 
+/**
+ * Get: Return array of movies selected by user (favorites)
+ *
+ * @method Get
+ * @requires passport
+ * @param {string} endpoint - "/users/:Username/movies"
+ * @param {string} Username
+ * @returns {object[]} Returns array of objects
+ */
+
+ app.get(
+  "/users/:Username/movies",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Users.findOne({ Username: req.params.Username })
+      .then((user) => {
+        if (user) {
+          // If a user with the corresponding username was found, return user info
+          res.status(200).json(user.FavoriteMovies);
+        } else {
+          res.status(400).send("Could not find favorite movies for this user");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
+
 //Add movie to favoriteMovies list
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
