@@ -7,7 +7,7 @@ const express = require('express'),
   mongoose = require('mongoose'),
   Models = require('./models.js'),
   Movies = Models.Movie,
-  Users = Models.User
+  Users = Models.User,
   cors = require('cors');
 
 const { check, validationResult } = require('express-validator');
@@ -42,7 +42,6 @@ app.use(cors());
 //   'http://localhost:8080',
 //   'http://testsite.com',
 //   'http://localhost:1234',
-//   'https://movie-info-online.herokuapp.com'
 // ];
 
 // app.use(
@@ -70,7 +69,7 @@ require('./passport');
  * @returns Welcome message
  */
 app.get('/', (req, res) => {
-  res.status(200).send('Welcome to Movie Info!');
+  res.status(200).send('Welcome to  MyFlix');
 });
 
 /**CRUD */
