@@ -33,7 +33,7 @@ const cors = require('cors');
 let allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:1234',
-  'http://patrickholderness.github.io/myFlix-Angular-client',
+  'http://patrickholderness.github.io/',
   'http://localhost:4200',
   'http://movie-info-online.herokuapp.com'];
 
