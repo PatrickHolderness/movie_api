@@ -1,18 +1,18 @@
 const express = require('express'),
+  app = express(),
       morgan = require('morgan'),
       path = require('path'),
       bodyParser = require('body-parser'),
       uuid = require('uuid');
       fs = require('fs');
 
-// Next four lines used to integrate mongoose into Rest API to perform CRUD on MongoDB data
+      mongoose = require('mongoose'),
+      Models = require('./models.js'),
+      Movies = Models.Movie,
+      Users = Models.User,
+      cors = require('cors');
 
-const mongoose = require('mongoose');
-const Models = require('./models.js');
-
-const Movies = Models.Movie;
-const Users = Models.User;
-
+      const { check, validationResult } = require('express-validator');
 
 const dotenv = require('dotenv');
       dotenv.config()
@@ -28,7 +28,6 @@ const DATABASE_URL = process.env.DATABASE_URL ||
 "mongodb+srv://patrickholde:JSdBMUkI2CtbM8Mf@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority";
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const app = express();
   
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -38,18 +37,18 @@ app.use(bodyParser.urlencoded({
 //CORS - place before route middleware
 const cors = require('cors');
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://patrickholderness.github.io', 'http://localhost:4200','http://movie-info-online.herokuapp.com'];
+// let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://patrickholderness.github.io', 'http://localhost:4200','http://movie-info-online.herokuapp.com'];
 
-app.use(cors({
-  origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-          let message = 'The CORS policy for this application doesn\’t allow access from origin ' + origin;
-          return callback(new Error(message), false);
-      }
-      return callback(null, true);
-  }
-}));
+// // app.use(cors({
+// //   origin: (origin, callback) => {
+// //       if (!origin) return callback(null, true);
+// //       if (allowedOrigins.indexOf(origin) === -1) {
+// //           let message = 'The CORS policy for this application doesn\’t allow access from origin ' + origin;
+// //           return callback(new Error(message), false);
+// //       }
+// //       return callback(null, true);
+// //   }
+// // }));
 
 // app.options('*', cors());
 // var allowCrossDomain = function(req, res, next) {
