@@ -60,11 +60,11 @@ app.use(
   })
 );
 
-app.options('*', cors());
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'example.com');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+// app.options('*', cors());
+// var allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'example.com');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
 
 let auth = require('./auth')(app);
 
@@ -450,4 +450,3 @@ app.use((err, req, res, next) => {
 });
 
 
-};
