@@ -8,7 +8,7 @@ const express = require('express'),
   Models = require('./models.js'),
   Movies = Models.Movie,
   Users = Models.User
-  // cors = require('cors');
+  cors = require('cors');
 
 const { check, validationResult } = require('express-validator');
 
@@ -18,11 +18,10 @@ const { check, validationResult } = require('express-validator');
 //   useUnifiedTopology: true
 // });
 
-// PROD mode DB
-mongoose.connect(process.env.CONNECTION_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Mongoose connection to database for CRUD
+const DATABASE_URL = process.env.DATABASE_URL || 
+"mongodb+srv://patrickholde:JSdBMUkI2CtbM8Mf@movie-info.zujtgza.mongodb.net/MovieInfoDB?retryWrites=true&w=majority";
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // create a write stream(in append mode)
 // 'a': Open file for appending. The file is created if it does not exist.
