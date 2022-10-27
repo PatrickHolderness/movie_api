@@ -255,20 +255,33 @@ Users.findOneAndUpdate({ Username: req.params.Username }, {
   }
 );
 //Add movie to favoriteMovies list
-app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
-    Users.findOneAndUpdate({ Username: req.params.Username }, {
-       $push: { FavouriteMovies: req.params.MovieID }
+app.put('/users/:Username/movies/:MovieID', 
+passport.authenticate('jwt', {session: false}),
+ (req, res) => {
+    Users.findOneAndUpdate(
+      { Username: req.params.Username },
+       {
+       $push: { FavoriteMovies: req.params.MovieID }
      },
      { new: true }, // This line makes sure that the updated document is returned
-    (err, updatedUser) => {
-      if (err) {
+      // (err, updatedUser) => {
+      //   if (err) {
+      //     console.error(err);
+      //     res.status(500).send('Error: ' + err);
+      //   } else {
+      //     res.json(updatedUser);
+      //   }
+      // }
+      )
+      .then((user) => {
+        res.status(200).json(user);
+      })
+      .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
-      } else {
-        res.json(updatedUser);
-      }
-    });
-  });
+      });
+  }
+);
 //Delete movie from user's favoriteMovies list
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndUpdate(
