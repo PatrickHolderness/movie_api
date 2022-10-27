@@ -34,6 +34,7 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cors());
 
 // To specify particular URI
 
@@ -59,18 +60,17 @@ app.use(
   })
 );
 
-app.options('*', cors());
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'example.com');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+// app.options('*', cors());
+// var allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'example.com');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-//Validation and authentication
-const { check, validationResult } = require ('express-validator');
-// // const { rest, isLength, isEmpty } = require('lodash');
 let auth = require('./auth')(app);
+
+// Require passport module & import passport.js file
 const passport = require('passport');
-require('./passport.js');
+require('./passport');
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
@@ -449,4 +449,4 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something Broke: ' + err.stack);
 });
 
-};
+
