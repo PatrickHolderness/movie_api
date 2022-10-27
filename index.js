@@ -33,7 +33,7 @@ const cors = require('cors');
 let allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:1234',
-  'http://patrickholderness.github.io/',
+  'https://patrickholderness.github.io/',
   'http://localhost:4200',
   'http://movie-info-online.herokuapp.com'];
 
@@ -47,22 +47,20 @@ app.use(cors({
       return callback(null, true);
   }
 }));
-// app.options('*', cors());
-// var allowCrossDomain = function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', 'example.com');
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type');
-// }
+app.options('*', cors());
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'example.com');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+}
+
 //Validation and authentication
 const { check, validationResult } = require ('express-validator');
 // // const { rest, isLength, isEmpty } = require('lodash');
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport.js');
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-     next();
-});
+
 // GET requests
 app.get('/', (req, res) => {
     res.send("Welcome to Movie Info!");
