@@ -7,8 +7,8 @@ const express = require('express'),
   mongoose = require('mongoose'),
   Models = require('./models.js'),
   Movies = Models.Movie,
-  Users = Models.User,
-  cors = require('cors');
+  Users = Models.User
+  // cors = require('cors');
 
 const { check, validationResult } = require('express-validator');
 
@@ -37,9 +37,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
 // To specify particular URI
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 let allowedOrigins = [
   'http://localhost:8080',
+  'http://localhost:4200',
   'http://testsite.com',
   'http://localhost:1234',
   'https://patrickholderness.github.io/myFlix-Angular-client',
@@ -61,11 +70,11 @@ app.use(
   })
 );
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 let auth = require('./auth')(app);
 
