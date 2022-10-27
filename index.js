@@ -34,48 +34,36 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cors());
 
-// To specify particular URI
+// // To specify particular URI
 
-let allowedOrigins = [
-  'http://localhost:8080',
-  'http://testsite.com',
-  'http://localhost:1234',
-  'https://movie-info-online.herokuapp.com',
-  'patrickholderness.github.io'
-];
+// let allowedOrigins = [
+//   'http://localhost:8080',
+//   'http://testsite.com',
+//   'http://localhost:1234',
+//   'https://movie-info-online.herokuapp.com'
+// ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      // If a specific origin isn't found on the list of allowed origins
-      if (allowedOrigins.indexOf(origin) === -1) {
-        let message = `The CORS policy for this application doesn't allow access from origin ${origin}`;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
-    }
-  })
-);
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin) return callback(null, true);
+//       // If a specific origin isn't found on the list of allowed origins
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         let message = `The CORS policy for this application doesn't allow access from origin ${origin}`;
+//         return callback(new Error(message), false);
+//       }
+//       return callback(null, true);
+//     }
+//   })
+// );
 
-app.options('*', cors());
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'example.com');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-//Validation and authentication
-const { check, validationResult } = require ('express-validator');
-// // const { rest, isLength, isEmpty } = require('lodash');
 let auth = require('./auth')(app);
-const passport = require('passport');
-require('./passport.js');
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-     next();
-});
+// Require passport module & import passport.js file
+const passport = require('passport');
+require('./passport');
 
 /**
  * GET: Returns welcome message fro '/' request URL
@@ -449,5 +437,8 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something Broke: ' + err.stack);
 });
 
-
-};
+/**
+ * defines port, listening to port 8080
+ */
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0', () => console.log('Listening on port ' + port));
