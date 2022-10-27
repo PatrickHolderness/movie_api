@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
 //CORS - place before route middleware
 const cors = require('cors');
 
-let allowedOrigins = ['http://localhost:8080', 'http://patrickholderness.github.io', 'http://localhost:4200','http://movie-info-online.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'https://patrickholderness.github.io', 'http://localhost:4200','http://movie-info-online.herokuapp.com'];
 
 app.use(cors({
   origin: (origin, callback) => {
