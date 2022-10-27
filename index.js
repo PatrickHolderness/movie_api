@@ -34,7 +34,7 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(cors());
+app.use(cors());
 
 // // To specify particular URI
 
@@ -70,7 +70,7 @@ require('./passport');
  * @returns Welcome message
  */
 app.get('/', (req, res) => {
-  res.status(200).send('Welcome to Lee Movies');
+  res.status(200).send('Welcome to Movie Info!');
 });
 
 /**CRUD */
