@@ -39,13 +39,12 @@ app.use(cors());
 
 // // To specify particular URI
 
-// let allowedOrigins = [
-//   'http://localhost:8080',
-//   'http://testsite.com',
-//   'http://localhost:1234',
-//   '',
-//   'https://movie-info-online.herokuapp.com'
-// ];
+let allowedOrigins = [
+  'http://localhost:8080',
+  'http://testsite.com',
+  'http://localhost:1234',
+  'https://movie-info-online.herokuapp.com'
+];
 
 // app.use(
 //   cors({
