@@ -34,7 +34,7 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 
 // To specify particular URI
 
@@ -72,10 +72,10 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-     next();
-});
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+//      next();
+// });
 
 /**
  * GET: Returns welcome message fro '/' request URL
