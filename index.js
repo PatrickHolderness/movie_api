@@ -35,7 +35,8 @@ let allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:1234',
   'https://patrickholderness.github.io/myFlix-Angular-client',
-  'https://patrickholderness.github.io/',
+  'https://patrickholderness.github.io',
+  'https://patrickholderness.github.io/welcome',
   'http://localhost:4200',
   'http://movie-info-online.herokuapp.com'];
 
