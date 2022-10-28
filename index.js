@@ -30,31 +30,31 @@ app.use(bodyParser.urlencoded({
 }));
 //CORS - place before route middleware
 const cors = require('cors');
-// let allowedOrigins = [
-//   'http://localhost:8080',
-//   'http://localhost:1234',
-//   'https://patrickholderness.github.io/myFlix-Angular-client',
-//   'https://patrickholderness.github.io/',
-//   'http://localhost:4200',
-//   'http://movie-info-online.herokuapp.com'];
+let allowedOrigins = [
+  'http://localhost:8080',
+  'http://localhost:1234',
+  'https://patrickholderness.github.io/myFlix-Angular-client',
+  'https://patrickholderness.github.io/',
+  'http://localhost:4200',
+  'http://movie-info-online.herokuapp.com'];
 
 app.use(cors());
-// {
-//   origin: (origin, callback) => {
-//       if (!origin) return callback(null, true);
-//       if (allowedOrigins.indexOf(origin) === -1) {
-//           let message = 'The CORS policy for this application doesn\’t allow access from origin ' + origin;
-//           return callback(new Error(message), false);
-//       }
-//       return callback(null, true);
-//   }
-// }));
-// app.options('*', cors());
-// var allowCrossDomain = function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', 'example.com');
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type');
-// }
+{
+  origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+          let message = 'The CORS policy for this application doesn\’t allow access from origin ' + origin;
+          return callback(new Error(message), false);
+      }
+      return callback(null, true);
+  }
+
+app.options('*', cors());
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'example.com');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+}
 
 //Validation and authentication
 const { check, validationResult } = require ('express-validator');
@@ -63,10 +63,10 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport.js');
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-     next();
-});
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, OPTIONS');
+//      next();
+// });
 // GET requests
 app.get('/', (req, res) => {
     res.send("Welcome to Movie Info!");
@@ -334,3 +334,4 @@ const port = process.env.PORT || 1234;
 app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
 });
+}
