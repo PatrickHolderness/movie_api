@@ -38,7 +38,8 @@ let allowedOrigins = [
   'https://patrickholderness.github.io',
   'https://patrickholderness.github.io/welcome',
   'http://localhost:4200',
-  'http://movie-info-online.herokuapp.com'];
+  'http://movie-info-online.herokuapp.com',
+  'https://movie-info-online.netlify.app'];
 
 
   app.use(
